@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Remove .DS_Store files in MacOS
+**/.DS_Store
