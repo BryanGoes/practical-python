@@ -23,7 +23,7 @@ while principal > 0:
         payment_n += principal
         principal = 0
     total_paid = total_paid + payment_n
-    print(month, total_paid, principal)
+    print(f"{month}  {total_paid:0.2f}  {principal:0.2f}")
  
 print('Total paid', total_paid)
 print('Total month', month)
