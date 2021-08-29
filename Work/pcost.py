@@ -9,15 +9,17 @@ def portfolio_cost(filename):
 
     with open(filename) as f:
         rows = csv.reader(f)
-        next(rows) # get rid of header 
-        for line in rows:
+        header = next(rows) # get rid of header 
+        for i,line in enumerate(rows,start=2):
+            record = dict(zip(header, line))
             try:
-                shares = int(line[1])
+                shares = int(record['shares'])
+                price = float(record['price'])
+                total_cost += shares * price
+
             except ValueError:
-                print("The field is possibly missing! Check your raw data!")
+                print(f"Row {i}: Bad Row:{line}")
                 continue
-            price = float(line[2])
-            total_cost += shares * price
     return total_cost
 
 if len(sys.argv) == 2:
