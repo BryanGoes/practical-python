@@ -2,36 +2,20 @@
 #
 # Exercise 2.4
 import csv
+from fileparse_v2 import parse_csv
 
 def read_portfolio(filename):
-    portfolio = [] 
     with open(filename, 'rt') as f:
-        rows = csv.reader(f)
-        header = next(rows)
-        for row in rows:
-            record = dict(zip(header, row)) 
-            holding = {}
-            holding['name'] = record['name'] 
-            holding['shares'] =  int(record['shares'])
-            holding['price'] =  float(record['price'])
-            portfolio.append(holding)
+        portfolio = parse_csv(f ,select=['name','shares','price'], types=[str,int,float])
     return portfolio
 
 def read_prices(filename):
-    prices = {}
-    
-    with open(filename, 'rt') as f:
-        rows = csv.reader(f)
-        for row in rows:
-            try:
-                prices[row[0]] = float(row[1])
-            except IndexError: 
-                print("There is a IndexError!")
-                continue
-
+    with open(filename,'rt') as f:
+        priceslist = parse_csv(f, types=[str,float], has_headers=False)
+    prices = dict(priceslist) 
     return prices
 
-def make_report(portfolio, prices): 
+def print_report(portfolio, prices): 
     header = ('Name', 'Share', 'Price', 'Change')
     print('%10s %10s %10s %10s' % header)
     print(('-' * 10 + ' ') * len(header))
@@ -44,18 +28,37 @@ def make_report(portfolio, prices):
         cur_price_s = f'${cur_price:.2f}'
         print(f'{name:>10s} {shares:>10d} {cur_price_s:>10s} {change:>10.2f}')
  
-portfolio = read_portfolio('Data/portfolio.csv')
-prices = read_prices('Data/prices.csv')
+def calculate_cost(portfolio, prices):
+    '''
+    Calculat the value of shares in portfolio,
+    the gain, and print them out
+    '''
+    total = 0
+    gain = 0
+    for entry in portfolio:
+        current_p = prices[entry['name']]
+        previous_p = entry['price']
+        share = entry['shares']
 
-total = 0
-gain = 0
+        total += share * current_p
+        gain += (current_p - previous_p) * share
 
-for entry in portfolio:
-    current_p = prices[entry['name']]
-    previous_p = entry['price']
-    share = entry['shares']
+	     
+    print(f"The total values is {total:0.2f}, the gain is {gain:0.2f}")       
 
-    total += share * current_p
-    gain += (current_p - previous_p) * share
+def portfolio_report(portfolio_file='Data/portfolio.csv', prices_file='Data/prices.csv'):
+    '''
+    Present a report based on portfolio and prices
+    '''
+    
+    portfolio = read_portfolio(portfolio_file)
+    prices = read_prices(prices_file)
+    
+    print_report(portfolio, prices)
 
-print(f"The total values is {total:0.2f}, the gain is {gain:0.2f}")
+def main(argv):
+    portfolio_report(argv[1], argv[2])
+
+if __name__ == '__main__':
+    import sys
+    main(sys.argv)
