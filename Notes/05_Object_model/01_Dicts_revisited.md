@@ -611,7 +611,7 @@ together.  For example, calling `s(25)` actually does this:
 
 Make a new class that inherits from `Stock`.
 
-```
+```Python
 >>> class NewStock(Stock):
         def yow(self):
             print('Yow!')
