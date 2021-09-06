@@ -7,13 +7,12 @@ import stock
 import tableformat
 from portfolio import Portfolio
 
-def read_portfolio(filename):
+def read_portfolio(filename, **options):
     with open(filename, 'rt') as f:
-        portdicts = parse_csv(f ,select=['name','shares','price'], types=[str,int,float])
+       self = Portfolio.from_csv(lines, **options) 
     
-    portfolio = [ stock.Stock(d['name'], d['shares'], d['price']) for d in portdicts ] 
 
-    return Portfolio(portfolio)
+    return self 
 
 def read_prices(filename):
     with open(filename,'rt') as f:

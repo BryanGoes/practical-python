@@ -130,3 +130,6 @@ dmypy.json
 
 # Remove .DS_Store files in MacOS
 **/.DS_Store
+
+# Any files used for vim undo
+*~

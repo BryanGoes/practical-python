@@ -73,7 +73,7 @@ of variables that it depends on.
 
 ### Using Closures
 
-Closure are an essential feature of Python. However, their use if often subtle.
+Closure are an essential feature of Python. However, their use is often subtle.
 Common applications:
 
 * Use in callback functions.
