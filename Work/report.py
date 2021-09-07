@@ -9,7 +9,7 @@ from portfolio import Portfolio
 
 def read_portfolio(filename, **options):
     with open(filename, 'rt') as f:
-       self = Portfolio.from_csv(lines, **options) 
+       self = Portfolio.from_csv(f, **options) 
     
 
     return self 
@@ -92,4 +92,14 @@ def main(argv):
 
 if __name__ == '__main__':
     import sys
+    # This file sets up basic configuration of the logging module.
+    # Change settings here to adjust logging output as needed.
+    import logging
+    logging.basicConfig(
+            filename = 'app.log',            # Name of the log file (omit to use stderr)
+            filemode = 'w',                  # File mode (use 'a' to append)
+            level    = logging.WARNING,      # Logging level (DEBUG, INFO, WARNING, ERROR, or CRITICAL)
+            )
+
+
     main(sys.argv)

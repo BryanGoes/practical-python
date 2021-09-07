@@ -1,5 +1,7 @@
 #Another concise version of parsing files
 import csv
+import logging
+log = logging.getLogger(__name__)
 
 def parse_csv(lines, select=None, types=None, has_headers=True, delimiter=',',silence_errors=False):
     records = []
@@ -26,11 +28,13 @@ def parse_csv(lines, select=None, types=None, has_headers=True, delimiter=',',si
         if types:
             try:
                 row = [ func(val) for func, val in zip(types, row) ]
-            except ValueError:
+            except ValueError as e:
                 if silence_errors:
                     pass
                 else:
-                    print(f'Row {i}: couldn\'t convert {row} ')
+                    log.warning("Row %d: Couldn't convert %s", i, row)
+                    log.debug("Row %d: Reason %s", i, e)
+                continue
         if has_headers:
             record = dict(zip(headers, row))
         else:

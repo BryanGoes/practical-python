@@ -7,32 +7,47 @@
 BasicPrinter	Data/stocksim.py	/^class BasicPrinter(object):$/;"	c
 CSVTableFormatter	tableformat.py	/^class CSVTableFormatter(TableFormatter):$/;"	c
 Counter	portfolio.py	/^        from collections import Counter$/;"	i
+Float	stock.py	/^from typedproperty import typedproperty, String, Integer, Float$/;"	i
+Float	typedproperty.py	/^Float = lambda name: typedproperty(name, float)$/;"	v
 FormatError	tableformat.py	/^class FormatError(Exception):$/;"	c
 HTMLTableFormatter	tableformat.py	/^class HTMLTableFormatter(TableFormatter):$/;"	c
+Integer	stock.py	/^from typedproperty import typedproperty, String, Integer, Float$/;"	i
+Integer	typedproperty.py	/^Integer = lambda name: typedproperty(name, int)$/;"	v
 LogPrinter	Data/stocksim.py	/^class LogPrinter(object):$/;"	c
 MarketSimulator	Data/stocksim.py	/^class MarketSimulator(object):$/;"	c
 Portfolio	portfolio.py	/^class Portfolio:$/;"	c
+Portfolio	report.py	/^from portfolio import Portfolio$/;"	i
 Stock	stock.py	/^class Stock:$/;"	c
 StockTrack	Data/stocksim.py	/^class StockTrack(object):$/;"	c
+String	stock.py	/^from typedproperty import typedproperty, String, Integer, Float$/;"	i
+String	typedproperty.py	/^String = lambda name: typedproperty(name, str)$/;"	v
 TableFormatter	tableformat.py	/^class TableFormatter:$/;"	c
 TextTableFormatter	tableformat.py	/^class TextTableFormatter(TableFormatter):$/;"	c
+__contains__	portfolio.py	/^    def __contains__(self, name):$/;"	m	class:Portfolio	file:
+__getitem__	portfolio.py	/^    def __getitem__(self, index):$/;"	m	class:Portfolio	file:
 __init__	Data/stocksim.py	/^    def __init__(self):$/;"	m	class:MarketSimulator
 __init__	Data/stocksim.py	/^    def __init__(self,filename):$/;"	m	class:LogPrinter
 __init__	Data/stocksim.py	/^    def __init__(self,name):$/;"	m	class:StockTrack
-__init__	portfolio.py	/^    def __init__(self, holdings):$/;"	m	class:Portfolio
+__init__	portfolio.py	/^    def __init__(self):$/;"	m	class:Portfolio
 __init__	stock.py	/^    def __init__(self, name, shares, price):$/;"	m	class:Stock
+__iter__	portfolio.py	/^    def __iter__(self):$/;"	m	class:Portfolio	file:
+__len__	portfolio.py	/^    def __len__(self):$/;"	m	class:Portfolio	file:
 __repr__	stock.py	/^    def __repr__(self):$/;"	m	class:Stock	file:
-__slots__	stock.py	/^    __slots__ = ('name', '_shares', 'price')    $/;"	v	class:Stock
 add_data	Data/stocksim.py	/^    def add_data(self,record):$/;"	m	class:StockTrack
 add_history	Data/stocksim.py	/^    def add_history(self,filename):$/;"	m	class:MarketSimulator
+append	portfolio.py	/^    def append(self, holding):$/;"	m	class:Portfolio
 bill_thickness	sears.py	/^bill_thickness = 0.11 * 0.001    # Meters (0.11 mm)$/;"	v
 calculate_cost	report.py	/^def calculate_cost(portfolio, prices):$/;"	f
+change	follow.py	/^        change = float(fields[4])$/;"	v
+convert_types	ticker.py	/^def convert_types(rows, types):$/;"	f
 cost	stock.py	/^    def cost(self):$/;"	m	class:Stock
+countdown	timethis.py	/^def countdown(n):$/;"	f
 create_formatter	tableformat.py	/^def create_formatter(name):$/;"	f
 csv	fileparse.py	/^import csv$/;"	i
 csv	fileparse_v2.py	/^import csv$/;"	i
 csv	pcost.py	/^import csv$/;"	i
 csv	report.py	/^import csv$/;"	i
+csv	ticker.py	/^import csv$/;"	i
 csv_record	Data/stocksim.py	/^def csv_record(fields):$/;"	f
 day	sears.py	/^    day = day + 1$/;"	v
 day	sears.py	/^day            = 1$/;"	v
@@ -40,6 +55,12 @@ distance	bounce.py	/^distance =  100.0$/;"	v
 extra_payment	mortgage.py	/^extra_payment = 1000$/;"	v
 extra_payment_end_month	mortgage.py	/^extra_payment_end_month = 108$/;"	v
 extra_payment_start_month	mortgage.py	/^extra_payment_start_month = 61$/;"	v
+fields	follow.py	/^        fields = line.split(',')$/;"	v
+fileparse	portfolio.py	/^import fileparse_v2 as fileparse$/;"	i
+filter_symbols	ticker.py	/^def filter_symbols(rows, names):$/;"	f
+follow	follow.py	/^def follow(filename):$/;"	f
+follow	ticker.py	/^from follow import follow$/;"	i
+from_csv	portfolio.py	/^    def from_csv(cls, lines, **opts):$/;"	m	class:Portfolio
 headings	tableformat.py	/^    def headings(self, headers):$/;"	m	class:CSVTableFormatter
 headings	tableformat.py	/^    def headings(self, headers):$/;"	m	class:HTMLTableFormatter
 headings	tableformat.py	/^    def headings(self, headers):$/;"	m	class:TableFormatter
@@ -47,58 +68,81 @@ headings	tableformat.py	/^    def headings(self, headers):$/;"	m	class:TextTable
 history_file	Data/stocksim.py	/^history_file = "dowstocks.csv"$/;"	v
 incr	Data/stocksim.py	/^    def incr(self,dt):$/;"	m	class:StockTrack
 interpolate	Data/stocksim.py	/^    def interpolate(self,field):$/;"	m	class:StockTrack
+lines	ticker.py	/^    lines = follow('Data\/stocklog.csv')$/;"	v
 m	Data/stocksim.py	/^m = MarketSimulator()$/;"	v
 main	pcost.py	/^def main(argv):$/;"	f
 main	report.py	/^def main(argv):$/;"	f
+make_dicts	ticker.py	/^def make_dicts(rows, headers):$/;"	f
 make_record	Data/stocksim.py	/^    def make_record(self):$/;"	m	class:StockTrack
 make_reportdata	report.py	/^def make_reportdata(portfolio, prices):$/;"	f
 math	Data/stocksim.py	/^import math$/;"	i
 minutes	Data/stocksim.py	/^def minutes(tm):$/;"	f
 minutes_to_str	Data/stocksim.py	/^def minutes_to_str(m):$/;"	f
 month	mortgage.py	/^month = 0$/;"	v
+name	follow.py	/^        name = fields[0].strip('"') #eliminate the double quote around the name$/;"	v
+name	stock.py	/^    name = String('name')$/;"	v	class:Stock
 num	bounce.py	/^num = 1$/;"	v
 num_bills	sears.py	/^    num_bills = num_bills * 2$/;"	v
 num_bills	sears.py	/^num_bills      = 1$/;"	v
+os	follow.py	/^import os$/;"	i
 parse_csv	fileparse.py	/^def parse_csv(filename, select=[], types=[], has_headers=True,delimiter=','): $/;"	f
 parse_csv	fileparse_v2.py	/^def parse_csv(lines, select=None, types=None, has_headers=True, delimiter=',',silence_errors=False):$/;"	f
 parse_csv	report.py	/^from fileparse_v2 import parse_csv$/;"	i
+parse_stock_data	ticker.py	/^def parse_stock_data(lines):$/;"	f
 payment	mortgage.py	/^payment = 2684.11$/;"	v
 payment_n	mortgage.py	/^        payment_n = payment $/;"	v
 payment_n	mortgage.py	/^        payment_n = payment + 1000$/;"	v
+portfolio	follow.py	/^    portfolio = report.read_portfolio('Data\/portfolio.csv')$/;"	v
 portfolio_cost	pcost.py	/^def portfolio_cost(filename):$/;"	f
 portfolio_report	report.py	/^def portfolio_report(portfolio_file='Data\/portfolio.csv', prices_file='Data\/prices.csv'):$/;"	f
+price	follow.py	/^        price = float(fields[1])$/;"	v
+price	stock.py	/^    price = Float('price')$/;"	v	class:Stock
 principal	mortgage.py	/^        principal = 0$/;"	v
 principal	mortgage.py	/^    principal = principal * (1+rate\/12) - payment_n$/;"	v
 principal	mortgage.py	/^principal = 500000.0$/;"	v
 print_report	report.py	/^def print_report(reportdata, formatter): $/;"	f
 print_table	tableformat.py	/^def print_table(portfolio, columns, formatter):$/;"	f
+prop	typedproperty.py	/^    def prop(self):$/;"	f	function:typedproperty
+prop	typedproperty.py	/^    def prop(self, value):$/;"	f	function:typedproperty
 publish	Data/stocksim.py	/^    def publish(self,record):$/;"	m	class:MarketSimulator
 rate	mortgage.py	/^rate = 0.05$/;"	v
 read_history	Data/stocksim.py	/^def read_history(filename):$/;"	f
 read_portfolio	pcost.py	/^from report import read_portfolio$/;"	i
-read_portfolio	report.py	/^def read_portfolio(filename):$/;"	f
+read_portfolio	report.py	/^def read_portfolio(filename, **options):$/;"	f
 read_prices	report.py	/^def read_prices(filename):$/;"	f
 register	Data/stocksim.py	/^    def register(self,observer):$/;"	m	class:MarketSimulator
+report	follow.py	/^    import report$/;"	i
+report	ticker.py	/^import report$/;"	i
 reset	Data/stocksim.py	/^    def reset(self,time):$/;"	m	class:MarketSimulator
 reset	Data/stocksim.py	/^    def reset(self,time):$/;"	m	class:StockTrack
 row	tableformat.py	/^    def row(self, rowdata):$/;"	m	class:CSVTableFormatter
 row	tableformat.py	/^    def row(self, rowdata):$/;"	m	class:HTMLTableFormatter
 row	tableformat.py	/^    def row(self, rowdata):$/;"	m	class:TableFormatter
 row	tableformat.py	/^    def row(self, rowdata):$/;"	m	class:TextTableFormatter
+rows	ticker.py	/^    rows = parse_stock_data(lines)$/;"	v
 run	Data/stocksim.py	/^    def run(self,dt):$/;"	m	class:MarketSimulator
 sears_height	sears.py	/^sears_height   = 442             # Height (meters)$/;"	v
+select_column	ticker.py	/^def select_column(rows, indices):$/;"	f
 sell	stock.py	/^    def sell(self, shares):$/;"	m	class:Stock
-shares	stock.py	/^    def shares(self):$/;"	m	class:Stock
-shares	stock.py	/^    def shares(self, value):$/;"	m	class:Stock
+shares	stock.py	/^    shares = Integer('shares')$/;"	v	class:Stock
+stock	portfolio.py	/^import stock$/;"	i
 stock	report.py	/^import stock$/;"	i
 sys	pcost.py	/^import sys$/;"	i
 sys	report.py	/^    import sys$/;"	i
 tableformat	report.py	/^import tableformat$/;"	i
+tableformat	ticker.py	/^import tableformat$/;"	i
 tabulate_shares	portfolio.py	/^    def tabulate_shares(self):$/;"	m	class:Portfolio
+ticker	ticker.py	/^def ticker(portfile, logfile, fmt):$/;"	f
 time	Data/stocksim.py	/^import time$/;"	i
+time	follow.py	/^import time$/;"	i
+time	timethis.py	/^import time$/;"	i
+timethis	timethis.py	/^def timethis(func):$/;"	f
 total_cost	portfolio.py	/^    def total_cost(self):$/;"	m	class:Portfolio
 total_paid	mortgage.py	/^    total_paid = total_paid + payment_n$/;"	v
 total_paid	mortgage.py	/^total_paid = 0.0$/;"	v
+typedproperty	stock.py	/^from typedproperty import typedproperty, String, Integer, Float$/;"	i
+typedproperty	typedproperty.py	/^def typedproperty(name, expected_type):$/;"	f
 update	Data/stocksim.py	/^    def update(self):$/;"	m	class:StockTrack
 update	Data/stocksim.py	/^    def update(self,record):$/;"	m	class:BasicPrinter
 update	Data/stocksim.py	/^    def update(self,record):$/;"	m	class:LogPrinter
+wrapper	timethis.py	/^    def wrapper(*args, **kwargs):$/;"	f	function:timethis
