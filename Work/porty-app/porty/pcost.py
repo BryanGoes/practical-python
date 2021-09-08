@@ -3,12 +3,12 @@
 # Exercise 1.27
 import csv
 import sys
-from report import read_portfolio
+from . import report 
 
 def portfolio_cost(filename):
     total_cost = 0
 
-    portfolio = read_portfolio(filename)
+    portfolio = report.read_portfolio(filename)
 
 
     return portfolio.total_cost 

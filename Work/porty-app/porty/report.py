@@ -2,21 +2,21 @@
 #
 # Exercise 2.4
 import csv
-from fileparse_v2 import parse_csv
-import stock
-import tableformat
-from portfolio import Portfolio
+from . import fileparse_v2
+from . import stock
+from . import tableformat
+from . import portfolio 
 
 def read_portfolio(filename, **options):
     with open(filename, 'rt') as f:
-       self = Portfolio.from_csv(f, **options) 
+       self = portfolio.Portfolio.from_csv(f, **options) 
     
 
     return self 
 
 def read_prices(filename):
     with open(filename,'rt') as f:
-        priceslist = parse_csv(f, types=[str,float], has_headers=False)
+        priceslist =fileparse_v2.parse_csv(f, types=[str,float], has_headers=False)
     prices = dict(priceslist) 
     return prices
 
@@ -73,7 +73,7 @@ def make_reportdata(portfolio, prices):
 
     return records
  
-def portfolio_report(portfolio_file='Data/portfolio.csv', prices_file='Data/prices.csv'):
+def portfolio_report(portfolio_file='Data/portfolio.csv', prices_file='Data/prices.csv', formatt='csv'):
     '''
     Present a report based on portfolio and prices
     '''
@@ -83,12 +83,12 @@ def portfolio_report(portfolio_file='Data/portfolio.csv', prices_file='Data/pric
     
     report = make_reportdata(portfolio, prices)
     
-    formatter = tableformat.CSVTableFormatter()
+    formatter = tableformat.create_formatter(formatt)
  
     print_report(report, formatter)
 
 def main(argv):
-    portfolio_report(argv[1], argv[2])
+    portfolio_report(argv[1], argv[2], argv[3])
 
 if __name__ == '__main__':
     import sys
